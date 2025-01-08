@@ -1,0 +1,104 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.product-image {
+  max-width: 400px;
+  width: 100%;
+}
+
+.rating span {
+  color: #ffc000;
+}
+img.large {
+  max-width: 100%;
+}
+
+/* CartPage.css */
+.cart-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cart-item:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+.cart-item img {
+  border-radius: 5px;
+}
+
+.cart-item div {
+  flex: 1;
+  margin-left: 10px;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff; /* Bootstrap primary color */
+}
+
+button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade of Bootstrap primary */
+}
+
+button:disabled {
+  background-color: #ccc; /* Disabled button color */
+  cursor: not-allowed;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #888;
+}
+
+.proceed-checkout {
+  margin-top: 20px;
+  text-align: center;
+}
+
+img.thumbnail {
+  height: 80px;
+}
