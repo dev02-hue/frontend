@@ -12,7 +12,9 @@ export const fetchProducts = createAsyncThunk<
   { rejectValue: string }
 >("products/fetch", async (_, { rejectWithValue }) => {
   try {
-    const { data } = await apiClient.get("/api/products");
+    const { data } = await apiClient.get(
+      "https://backend-gy2d.onrender.com/api/products"
+    );
     return data;
   } catch (err) {
     return rejectWithValue(getError(err as APiError));
@@ -27,7 +29,7 @@ export const fetchProductDetailsBySlug = createAsyncThunk<
   try {
     console.log("Fetching URL:", `/api/products/slug/${slug}`);
     const { data } = await apiClient.get(
-      `http://localhost:4000/api/products/slug/${slug}`
+      `https://backend-gy2d.onrender.com/api/products/slug/${slug}`
     );
     return data;
   } catch (err) {
@@ -43,7 +45,7 @@ export const addProducts = createAsyncThunk<
 >("products/add", async (newProduct, { rejectWithValue }) => {
   try {
     const { data } = await apiClient.post(
-      "/api/products/addproducts",
+      "https://backend-gy2d.onrender.com/api/products/addproducts",
       newProduct
     );
     return data;
@@ -59,7 +61,9 @@ export const deleteProduct = createAsyncThunk<
   { rejectValue: string }
 >("products/delete", async (id, { rejectWithValue }) => {
   try {
-    await apiClient.delete(`/api/products/${id}`);
+    await apiClient.delete(
+      `https://backend-gy2d.onrender.com/api/products/${id}`
+    );
     return id; // Return the product ID to remove it from the state
   } catch (err) {
     return rejectWithValue(getError(err as APiError));
