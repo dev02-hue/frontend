@@ -9,14 +9,18 @@ export const getError = (error: APiError) => {
 };
 
 export const convertProductToCartItem = (product: Product): CartItem => {
+  if (!product._id) {
+    throw new Error("Product ID is undefined.");
+  }
+
   const cartItem: CartItem = {
-    _id: product._id,
-    image: product.image,
-    slug: product.slug,
+    _id: product._id, // Now guaranteed to be a string
+    image: product.image || "", // Optional fallback for other fields
+    slug: product.slug || "",
     quantity: 1,
-    countInStock: product.countInStock,
-    price: product.price,
-    name: product.name,
+    countInStock: product.countInStock || 0,
+    price: product.price || 0,
+    name: product.name || "",
   };
   return cartItem;
 };
