@@ -12,7 +12,7 @@ export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (order: Order) => {
     const { data } = await apiClient.post<{ message: string; order: Order }>(
-      "api/orders",
+      "https://backend-gy2d.onrender.com/api/orders",
       order
     );
     return data.order;
@@ -24,7 +24,7 @@ export const getOrderById = createAsyncThunk(
   "order/getOrderById",
   async (orderId: string) => {
     const { data } = await apiClient.get<{ message: string; order: Order }>(
-      `api/orders/${orderId}`
+      `https://backend-gy2d.onrender.com/api/orders/${orderId}`
     );
     return data.order;
   }
@@ -33,7 +33,7 @@ export const getOrderById = createAsyncThunk(
 // Async thunk for getting all orders
 export const getAllOrders = createAsyncThunk("order/getAllOrders", async () => {
   const { data } = await apiClient.get<{ message: string; orders: Order[] }>(
-    "api/orders"
+    "https://backend-gy2d.onrender.com/api/orders"
   );
   return data.orders;
 });

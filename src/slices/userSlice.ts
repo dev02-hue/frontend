@@ -23,7 +23,9 @@ const initialState: UserState = {
 
 // Async thunk to get users
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const response = await apiClient.get("/api/users");
+  const response = await apiClient.get(
+    "https://backend-gy2d.onrender.com/api/users"
+  );
   return response.data;
 });
 
@@ -33,7 +35,9 @@ export const deleteUser = createAsyncThunk<
   { rejectValue: string } // The error type returned by rejectWithValue
 >("users/deleteUser", async (userId: string, { rejectWithValue }) => {
   try {
-    await apiClient.delete(`/api/users/${userId}`);
+    await apiClient.delete(
+      `https://backend-gy2d.onrender.com/api/users/${userId}`
+    );
     console.log("Deleting user with ID:", userId);
     return userId; // Return the userId to remove it from the state
   } catch (error: unknown) {
@@ -60,7 +64,10 @@ export const addUser = createAsyncThunk<
   User,
   { name: string; email: string; password: string; role: string }
 >("user/addUser", async (userData) => {
-  const response = await apiClient.post("/api/users/createuser", userData);
+  const response = await apiClient.post(
+    "https://backend-gy2d.onrender.com/api/users/createuser",
+    userData
+  );
   return response.data;
 });
 
@@ -69,7 +76,10 @@ export const signIn = createAsyncThunk<
   User,
   { email: string; password: string }
 >("user/signIn", async (userData) => {
-  const response = await apiClient.post("/api/users/signin", userData);
+  const response = await apiClient.post(
+    "https://backend-gy2d.onrender.com/api/users/signin",
+    userData
+  );
   localStorage.setItem("userInfo", JSON.stringify(response.data));
   return response.data;
 });
@@ -79,7 +89,7 @@ export const signUp = createAsyncThunk<
   User,
   { name: string; email: string; password: string }
 >("user/signUp", async (userData) => {
-  const response = await apiClient.post("/api/users/signup", userData);
+  const response = await apiClient.post("https://backend-gy2d.onrender.com/api/users/signup", userData);
   localStorage.setItem("userInfo", JSON.stringify(response.data));
   return response.data;
 });
